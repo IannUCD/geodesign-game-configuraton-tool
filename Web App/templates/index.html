@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Config Generator</title>
+</head>
+<body>
+    <h1>Config Generator</h1>
+    <form id="config-form" action="/generate_config" method="post">
+        <!-- Input fields for city name, description, Ebas, cost, currency, and budget -->
+        <label for="city-name">City Name:</label>
+        <input type="text" name="city-name" required><br>
+        <!-- Other input fields for city description, Ebas selection, mean cost, currency, and budget -->
+
+        <!-- Hidden input fields for map center and bounds -->
+        <input type="hidden" id="map-center" name="map-center">
+        <input type="hidden" id="map-bounds" name="map-bounds">
+
+        <input type="submit" value="Generate Config">
+    </form>
+
+    <div id="map"></div> <!-- Map container -->
+
+    <script>
+        // JavaScript code for handling the map and updating hidden input fields
+        // You can include your map library code here
+        // Use the map-related code you have for updating the #map-center and #map-bounds elements
+
+        // For example, if you're using Leaflet, you might have something like this:
+        const map = L.map('map').setView([51.5074, -0.1278], 10);
+        // Other Leaflet map setup code
+
+        // Event listener for form submission
+        document.getElementById('config-form').addEventListener('submit', function (event) {
+            event.preventDefault();
+            // Get map center and bounds
+            const mapCenter = map.getCenter();
+            const mapBounds = map.getBounds();
+
+            // Update the hidden input fields with the map data
+            document.getElementById('map-center').value = JSON.stringify(mapCenter);
+            document.getElementById('map-bounds').value = JSON.stringify({
+                north: mapBounds.getNorth(),
+                south: mapBounds.getSouth(),
+                east: mapBounds.getEast(),
+                west: mapBounds.getWest()
+            });
+
+            // Submit the form
+            this.submit();
+        });
+    </script>
+</body>
+</html>
