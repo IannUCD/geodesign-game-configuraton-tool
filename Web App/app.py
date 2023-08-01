@@ -19,7 +19,8 @@ def generate_config():
         selected_ebas = request.form.getlist('selected-ebas')
         mean_cost = request.form['mean-cost']
         currency = request.form['currency']
-        # Get map center and bounds based on user interaction (you need to implement this part)
+        map_center = json.loads(request.form['map-center'])  # Get map center as JSON
+        map_bounds = json.loads(request.form['map-bounds'])  # Get map bounds as JSON
 
         # Construct eba JSON data based on the selected_ebas and your database (see example provided earlier)
         eba_data = [...]  # Replace with your implementation
@@ -27,9 +28,9 @@ def generate_config():
         # Construct globals JSON data
         globals_data = {
             "version": "0.1",
-            "center": {"lat": 23.0, "lng": -0.23},  # Replace with map center
+            "center": map_center,
             "game_currency": currency,
-            "bounds": ["51.2867602", "51.6918741", "-0.5103751", "0.3340155"]  # Replace with map bounds
+            "bounds": map_bounds
         }
 
         # Construct local JSON data
@@ -42,7 +43,7 @@ def generate_config():
                     "total_available_budget": 200000,  # Replace with city budget from form data
                     "currency": currency,
                     "logo": "score.com/images/dunlaoghaire.jpg",
-                    "center": ["23.0", "-0.21"]  # Replace with map center
+                    "center": [map_center['lat'], map_center['lng']]  # Use map center for "local" data
                 }
             ]
         }
