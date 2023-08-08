@@ -1,35 +1,16 @@
-#!/usr/bin/env python
-# coding: utf-8
-
-# # Create the database
-
-# ## Librairies
-
-# In[1]:
-
 
 pip install Flask
-
-
-# In[2]:
-
 
 from flask import Flask, render_template, request
 import sqlite3
 
 
-# ### Initialization
-
-# In[3]:
-
+#### Initialization
 
 app = Flask(__name__)
 
 
-# ## Define the database
-
-# In[4]:
-
+### Define the database
 
 def create_db():
     conn = sqlite3.connect('config_generator.db')
@@ -57,10 +38,7 @@ def create_db():
     conn.close()
 
 
-# ### Initial EBAs
-
-# In[ ]:
-
+#### Initial EBAs
 
 def insert_initial_ebas():
     conn = sqlite3.connect('config_generator.db')
@@ -77,10 +55,7 @@ def insert_initial_ebas():
     conn.close()
 
 
-# ## Create the route
-
-# In[5]:
-
+### Create the route
 
 @app.route('/generate_config', methods=['POST'])
 def generate_config():
@@ -109,10 +84,7 @@ def generate_config():
     return 'Config generated successfully!'
 
 
-# ### Running the app
-
-# In[6]:
-
+#### Running the app
 
 if __name__ == '__main__':
     create_db()  # Create the database and tables when the app starts
