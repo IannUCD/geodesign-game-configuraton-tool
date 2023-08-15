@@ -30,12 +30,24 @@
         <h2>City Configuration</h2>
         <form id="config-form">
             <!-- Your existing city configuration form elements here -->
+        <label for="city-name">City Name:</label>
+        <input type="text" name="city-name" required><br>
 
+        <label for="city-description">City Description:</label>
+        <textarea name="city-description" required></textarea><br>
+
+        <label for="currency">Choose Currency:</label>
+        <select name="currency" required>
+            <option value="EUR">EUR</option>
+            <option value="USD">USD</option>
+        
+        <label for="city-budget">City Budget:</label>
+        <input type="number" name="city-budget" required><br>
+            
             <!-- Hidden input fields for map center and bounds -->
             <input type="hidden" id="map-center" name="map-center">
             <input type="hidden" id="map-bounds" name="map-bounds">
-
-            <input type="submit" value="Generate City Config">
+            
         </form>
 
         <div id="map"></div> <!-- Map container -->
@@ -45,8 +57,10 @@
         <h2>Select EBAs</h2>
         <form id="ebas-form">
             <!-- Your EBA selection form elements here -->
-
-            <input type="submit" value="Select EBAs">
+        <label for="selected-ebas">Choose EBAs:</label><br>
+            <input type="checkbox" name="selected-ebas" value="eba1"> EBA 1<br>
+            <input type="checkbox" name="selected-ebas" value="eba2"> EBA 2<br>
+                <input type="submit" value="Select EBAs">
         </form>
     </section>
 
