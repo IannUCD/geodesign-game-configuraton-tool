@@ -10,6 +10,20 @@ app = Flask(__name__)
 def index():
     return render_template('index.html')
 
+def construct_eba_data(selected_ebas):
+    eba_data = []
+    
+    # Define your EBA data based on the selected EBAs
+    for eba_id in selected_ebas:
+        eba = {
+            "id": eba_id,
+            "name": f"EBA {eba_id}",
+            # Add other properties specific to the EBA
+        }
+        eba_data.append(eba)
+    
+    return eba_data
+
 @app.route('/generate_config', methods=['POST'])
 def generate_config():
     try:
@@ -22,8 +36,8 @@ def generate_config():
         map_center = json.loads(request.form['map-center'])  # Get map center as JSON
         map_bounds = json.loads(request.form['map-bounds'])  # Get map bounds as JSON
 
-        # Construct eba JSON data based on the selected_ebas and your database (see example provided earlier)
-        eba_data = [...]  # Replace with your implementation
+        # Construct eba JSON data based on the selected_ebas and your database 
+        eba_data = construct_eba_data(selected_ebas)
 
         # Construct globals JSON data
         globals_data = {
