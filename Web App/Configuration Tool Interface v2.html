@@ -123,6 +123,23 @@ footer {
     background-color: #333;
     color: white;
 }
+
+/* Button styles */
+.download-button {
+    padding: 15px 30px;
+    background-color: #333;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-family: Arial, sans-serif; /* Use the same font as the logo */
+    font-size: 18px; /* Adjust the font size as needed */
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.download-button:hover {
+    background-color: #007bff; /* Blue color on hover */
+}
     </style>
 </head>
 <body>
@@ -172,12 +189,6 @@ footer {
             <input type="checkbox" name="selected-ebas" value="eba1"> EBA 1<br>
             <input type="checkbox" name="selected-ebas" value="eba2"> EBA 2<br>
         </form>
-    </section>
-    <section>
-        <h2>Downloading the configuration</h2>
-        <div style="text-align: center;">
-            <button id="download-config-button" onclick="downloadConfig()">Download Actual Config</button>
-        </div>
     </section>
     <!-- Include Leaflet JS -->
     <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
@@ -246,6 +257,9 @@ footer {
     }
 </script>
     </script>
+    <div style="text-align: center;">
+        <button id="download-config-button" class="download-button" onclick="downloadConfig()">Download Actual Config</button>
+    </div>
     <footer>
         <a href="https://score-eu-project.eu"><img src="https://score-eu-project.eu/wp-content/uploads/2021/09/SCORE-LOGO-web.png" alt="SCORE project Logo" class="logo"></a>
     </footer>
