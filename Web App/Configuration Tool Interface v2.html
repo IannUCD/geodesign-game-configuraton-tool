@@ -159,8 +159,6 @@ footer {
             <!-- Hidden input fields for map center and bounds -->
             <input type="hidden" id="map-center" name="map-center">
             <input type="hidden" id="map-bounds" name="map-bounds">
-
-            <input type="submit" value="Generate City Config">
         </form>
 
         <div id="map"></div> <!-- Map container -->
@@ -173,10 +171,12 @@ footer {
             <label for="selected-ebas">Choose EBAs:</label><br>
             <input type="checkbox" name="selected-ebas" value="eba1"> EBA 1<br>
             <input type="checkbox" name="selected-ebas" value="eba2"> EBA 2<br>
-            <input type="submit" value="Select EBAs">
         </form>
     </section>
-
+        <h2>Downloading the configuration</h2>
+        <div style="text-align: center;">
+            <button id="download-config-button" onclick="downloadConfig()">Download Actual Config</button>
+        </div>
     <!-- Include Leaflet JS -->
     <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
 
@@ -214,6 +214,35 @@ footer {
             // Submit the form
             this.submit();
         });
+
+        // Function to handle the "Download Actual Config" button
+    function downloadConfig() {
+        // Prepare the data you want to send (if needed)
+        // For example, you can include data from form inputs
+
+        // Send a POST request to the /generate_config route
+        fetch('/generate_config', {
+            method: 'POST',
+            // You can add headers and data here if needed
+        })
+        .then(response => response.blob())
+        .then(blob => {
+            // Create a downloadable link for the generated ZIP file
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'config.zip';
+            a.click();
+
+            // Clean up the object URL
+            URL.revokeObjectURL(url);
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            // Handle the error as needed
+        });
+    }
+</script>
     </script>
     <footer>
         <a href="https://score-eu-project.eu"><img src="https://score-eu-project.eu/wp-content/uploads/2021/09/SCORE-LOGO-web.png" alt="SCORE project Logo" class="logo"></a>
