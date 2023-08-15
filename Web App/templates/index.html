@@ -21,7 +21,25 @@
         <!-- Input fields for city name, description, Ebas, cost, currency, and budget -->
         <label for="city-name">City Name:</label>
         <input type="text" name="city-name" required><br>
-        <!-- Other input fields for city description, Ebas selection, mean cost, currency, and budget -->
+
+        <label for="city-description">City Description:</label>
+        <textarea name="city-description" required></textarea><br>
+
+        <label for="selected-ebas">Select EBAs:</label><br>
+        <input type="checkbox" name="selected-ebas" value="eba1"> EBA 1<br>
+        <input type="checkbox" name="selected-ebas" value="eba2"> EBA 2<br>
+
+        <label for="mean-cost">Mean Cost:</label>
+        <input type="number" name="mean-cost" required><br>
+
+        <label for="currency">Choose Currency:</label>
+        <select name="currency" required>
+            <option value="EUR">EUR</option>
+            <option value="USD">USD</option>
+        </select><br>
+
+        <label for="city-budget">City Budget:</label>
+        <input type="number" name="city-budget" required><br>
 
         <!-- Hidden input fields for map center and bounds -->
         <input type="hidden" id="map-center" name="map-center">
@@ -34,4 +52,3 @@
 
 </body>
 </html>
-
