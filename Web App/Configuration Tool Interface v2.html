@@ -7,12 +7,121 @@
     <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
     <!-- Include the map.js file -->
     <script src="map.js"></script>
-
+    
     <style>
-        /* Add custom styles here */
-        #map {
-            height: 600px;
-        }
+        /* Body and general styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f5f5f5;
+    color: #333;
+}
+
+/* Header styles */
+header {
+    background-color: #333;
+    color: white;
+    padding: 10px;
+    text-align: center;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 36px;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+}
+
+nav ul li {
+    margin-right: 20px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+    transition: color 0.3s;
+}
+
+nav ul li a:hover {
+    color: #007bff; /* Blue color on hover */
+}
+
+/* Section styles */
+section {
+    margin: 20px;
+    padding: 20px;
+    background-color: white;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+section h2 {
+    margin-top: 0;
+    font-size: 24px;
+}
+
+/* Form styles */
+form {
+    margin-top: 15px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+input[type="text"],
+input[type="number"],
+textarea,
+select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+input[type="checkbox"] {
+    margin-right: 5px;
+}
+
+input[type="submit"] {
+    padding: 10px 20px;
+    background-color: #333;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/* Map container styles */
+#map {
+    margin-top: 20px;
+    height: 600px
+}
+
+/* Logo styles */
+.logo {
+    display: block;
+    margin: 0 auto;
+    max-width: 200px;
+}
+
+/* Footer styles */
+footer {
+    text-align: center;
+    padding: 20px;
+    background-color: #333;
+    color: white;
+}
     </style>
 </head>
 <body>
@@ -30,24 +139,26 @@
         <h2>City Configuration</h2>
         <form id="config-form">
             <!-- Your existing city configuration form elements here -->
-        <label for="city-name">City Name:</label>
-        <input type="text" name="city-name" required><br>
+            <label for="city-name">City Name:</label>
+            <input type="text" name="city-name" required><br>
 
-        <label for="city-description">City Description:</label>
-        <textarea name="city-description" required></textarea><br>
+            <label for="city-description">City Description:</label>
+            <textarea name="city-description" required></textarea><br>
 
-        <label for="currency">Choose Currency:</label>
-        <select name="currency" required>
-            <option value="EUR">EUR</option>
-            <option value="USD">USD</option>
-        
-        <label for="city-budget">City Budget:</label>
-        <input type="number" name="city-budget" required><br>
-            
+            <label for="currency">Choose Currency:</label>
+            <select name="currency" required>
+                <option value="EUR">EUR</option>
+                <option value="USD">USD</option>
+            </select><br>
+
+            <label for="city-budget">City Budget:</label>
+            <input type="number" name="city-budget" required><br>
+
             <!-- Hidden input fields for map center and bounds -->
             <input type="hidden" id="map-center" name="map-center">
             <input type="hidden" id="map-bounds" name="map-bounds">
-            
+
+            <input type="submit" value="Generate City Config">
         </form>
 
         <div id="map"></div> <!-- Map container -->
@@ -57,10 +168,10 @@
         <h2>Select EBAs</h2>
         <form id="ebas-form">
             <!-- Your EBA selection form elements here -->
-        <label for="selected-ebas">Choose EBAs:</label><br>
+            <label for="selected-ebas">Choose EBAs:</label><br>
             <input type="checkbox" name="selected-ebas" value="eba1"> EBA 1<br>
             <input type="checkbox" name="selected-ebas" value="eba2"> EBA 2<br>
-                <input type="submit" value="Select EBAs">
+            <input type="submit" value="Select EBAs">
         </form>
     </section>
 
